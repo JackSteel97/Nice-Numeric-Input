@@ -8,7 +8,7 @@ export default Vue.extend({
     NiceNumericInput
   },
   data: () => ({
-    test: 0
+    cashValue: 0
   })
 });
 </script>
@@ -16,10 +16,20 @@ export default Vue.extend({
 <template>
   <div id="app">
     <div style="width: 10%">
-      <nice-numeric-input v-model="test" placeholder="test" label="test label" name="testnumber" currency="GBP" locale="en-GB" :max="100" :min="0" />
+      <nice-numeric-input v-model="cashValue"
+                          placeholder="Enter a cash value"
+                          label="Cash"
+                          name="example"
+                          currency="GBP"
+                          locale="en-GB"
+                          integer-only
+                          :max="100"
+                          :min="0"
+                          hide-label
+                          no-controls />
     </div>
     <div>
-      {{test}}
+      {{cashValue}}
     </div>
   </div>
 </template>

@@ -1,6 +1,6 @@
 
 <template>
-    <div class="input-wrapper" :class="[noControls ? '' : 'controls', isError ? 'error' : '']">
+    <div class="input-wrapper" :class="[noControls ? '' : 'controls', isError ? 'error' : '', wrapperClass]">
         <label v-if="!hideLabel"
                :id="labelId"
 			   :for="id"
@@ -11,7 +11,7 @@
         <button v-if="!noControls"
                 @click="decrease"
 				class="left-control"
-				:class="changeButtonClass"
+				:class="[changeButtonClass, decreaseButtonClass]"
                 :disabled="disabled || !canDecrease"
                 :title="decreaseTitle">
             {{internalDecreaseText}}
@@ -21,7 +21,7 @@
 			   @change="handleChange"
                @paste="handlePaste"
                :value="displayString"
-               :class="[noControls ? 'no-controls-input' : 'double-controls-input']"
+               :class="[noControls ? 'no-controls-input' : 'double-controls-input', inputClass]"
 			   :id="id"
                :name="name"
 			   :disabled="disabled"
@@ -32,7 +32,7 @@
         <button v-if="!noControls"
                 @click="increase"
 				class="right-control"
-				:class="changeButtonClass"
+				:class="[changeButtonClass, increaseButtonClass]"
                 :disabled="disabled || !canIncrease"
                 :title="increaseTitle">
             {{internalIncreaseText}}
@@ -47,22 +47,21 @@
 	export default Vue.extend({
 		props: {
 			value: { type: Number, default: 0 },
+			id: { type: String, default: "nice-numeric-input" },
+			name: { type: String, default: "nice-numeric-input" },
 			label: { type: String, required: true },
 			placeholder: { type: String, default: "" },
+			step: { type: Number, default: 1 },
 			min: { type: Number, default: Number.NEGATIVE_INFINITY },
 			max: { type: Number, default: Number.POSITIVE_INFINITY },
 			isValid: { type: Boolean, default: false, required: false },
 			disabled: { type: Boolean, default: false },
-			id: { type: String, default: "nice-numeric-input" },
-			name: { type: String, default: "nice-numeric-input" },
-			step: { type: Number, default: 1 },
 			locale: { type: String, default: navigator.language },
 			currency: { type: String, default: null },
 			minDecimalPlaces: { type: Number, default: 0 },
 			maxDecimalPlaces: { type: Number, default: 2 },
 			integerOnly: { type: Boolean, default: false },
 			noControls: { type: Boolean, default: false },
-			labelClass: { type: String, default: null },
 			hideLabel: { type: Boolean, default: false },
 			decreaseTitle: { type: String, default: "Increase" },
 			increaseTitle: { type: String, default: "Decrease" },
@@ -74,6 +73,13 @@
 			ultraDecreaseText: { type: String, default: "---" },
 			superStep: { type: Number, default: 10 },
 			ultraStep: { type: Number, default: 100 },
+			labelClass: { type: String, default: null },
+			inputClass: {type: String, default: null},
+			decreaseButtonClass: {type: String, default: null},
+			increaseButtonClass: {type: String, default: null},
+			wrapperClass: {type: String, default: null},
+			superStepClass: {type: String, default: ""},
+			ultraStepClass: {type: String, default: ""}
 		},
 
 		data: () => {
@@ -160,9 +166,9 @@
 			},
 			changeButtonClass() {
 				if (this.isUltraChangeActive) {
-					return "much-smaller-padding";
+					return this.ultraStepClass || "much-smaller-padding";
 				} else if (this.isSuperChangeActive) {
-					return "smaller-padding";
+					return this.superStepClass || "smaller-padding";
 				} else {
 					return "";
 				}
@@ -204,7 +210,7 @@
 			},
 			valueChanged(newValue: string, newInput: string, strictValidation: boolean = false, possibleRecurse: boolean = true): void {
 				const decimalNumbersRegex = /[+-]?\d+(\.\d+)?/g;
-				console.log("value change", newValue, newInput);
+
 				const normalisedInput = this.normaliseInput(newValue, this.locale);
 				// Match to find any numbers.
 				const matches = normalisedInput.match(decimalNumbersRegex);
@@ -273,7 +279,6 @@
 				}
 			},
 			setToDefaultValue(): void {
-				console.log("setting to default value");
 				let newVal = 0;
 				if (this.min != Number.NEGATIVE_INFINITY) {
 					newVal = this.min;
