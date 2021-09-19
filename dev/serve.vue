@@ -21,7 +21,6 @@ export default Vue.extend({
                           label="Cash"
                           name="example"
                           currency="GBP"
-                          locale="en-GB"
                           integer-only
                           :max="100"
                           :min="0"

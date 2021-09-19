@@ -1,5 +1,5 @@
 # Nice-Numeric-Input
-Nice-Numeric-Input is a lightweight modern and rich featured and highly customisable numeric input built on Vue. Capable of formatting as the user types, including currency formatting. With no extra dependencies other than Vue itself.
+Nice-Numeric-Input is a modern, rich featured and highly customisable numeric input built on Vue. Capable of formatting as the user types, including currency formatting. With no extra dependencies other than Vue itself.
 
 ## Demo
 TODO: codepen demo
@@ -11,6 +11,20 @@ TODO: codepen demo
 ```
 
 ### Usage
+**Import**
+```ts
+import NiceNumericInput from 'nice-numeric-input'
+```
+
+**Register**
+```ts
+export default Vue.extend({
+    //...
+    components: { NiceNumericInput }
+    //...
+});
+```
+
 For a full list of props see the [Reference Props](#props) section.
 ```html
 <nice-numeric-input v-model="cashValue"
@@ -38,7 +52,7 @@ For a full list of props see the [Reference Props](#props) section.
 | max                 | `Number`  | No       | `POSITIVE_INFINITY`    | Anything entered above this will fail the `isValid` check                                                     |
 | isValid             | `Boolean` | No       |                        | Basic internal validation, use the `.sync` modifier to get changes                                            |
 | disabled            | `Boolean` | No       | `false`                | Disable the entire component                                                                                  |
-| locale              | `String`  | No       | `navigator.language`   | Standard [BCP 47](https://tools.ietf.org/rfc/bcp/bcp47.txt) language tag                                      |
+| locale              | `String`  | No       | `window.navigator.language \|\| "en-US"`   | Standard [BCP 47](https://tools.ietf.org/rfc/bcp/bcp47.txt) language tag                                      |
 | currency            | `String`  | No       | `null`                 | When `null` currency formatting is turned off. Otherwise it can be any currency code e.g. `USD`, `EUR`, `JPY` |
 | minDecimalPlaces    | `Number`  | No       | `0`                    |                                                                                                               |
 | maxDecimalPlaces    | `Number`  | No       | `2`                    |                                                                                                               |

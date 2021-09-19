@@ -56,7 +56,7 @@
 			max: { type: Number, default: Number.POSITIVE_INFINITY },
 			isValid: { type: Boolean, default: false, required: false },
 			disabled: { type: Boolean, default: false },
-			locale: { type: String, default: navigator.language },
+			locale: { type: String, default: null },
 			currency: { type: String, default: null },
 			minDecimalPlaces: { type: Number, default: 0 },
 			maxDecimalPlaces: { type: Number, default: 2 },
@@ -74,12 +74,12 @@
 			superStep: { type: Number, default: 10 },
 			ultraStep: { type: Number, default: 100 },
 			labelClass: { type: String, default: null },
-			inputClass: {type: String, default: null},
-			decreaseButtonClass: {type: String, default: null},
-			increaseButtonClass: {type: String, default: null},
-			wrapperClass: {type: String, default: null},
-			superStepClass: {type: String, default: ""},
-			ultraStepClass: {type: String, default: ""}
+			inputClass: { type: String, default: null },
+			decreaseButtonClass: { type: String, default: null },
+			increaseButtonClass: { type: String, default: null },
+			wrapperClass: { type: String, default: null },
+			superStepClass: { type: String, default: "" },
+			ultraStepClass: { type: String, default: "" }
 		},
 
 		data: () => {
@@ -87,6 +87,7 @@
 				internalValue: null as (number | null),
 				ctrlActive: false,
 				shiftActive: false,
+				internalLocale: "en-US"
 			}
 		},
 
@@ -113,7 +114,7 @@
 					minDecimals = this.minDecimalPlaces;
 					maxDecimals = this.maxDecimalPlaces;
 				}
-				return this.internalValue.toLocaleString(this.locale, {
+				return this.internalValue.toLocaleString(this.internalLocale, {
 					style: this.currency ? "currency" : "decimal",
 					currency: this.currency || undefined,
 					minimumFractionDigits: minDecimals,
@@ -173,7 +174,7 @@
 					return "";
 				}
 			},
-			internalStep(){
+			internalStep() {
 				if (this.isUltraChangeActive) {
 					return this.ultraStep;
 				} else if (this.isSuperChangeActive) {
@@ -211,7 +212,7 @@
 			valueChanged(newValue: string, newInput: string, strictValidation: boolean = false, possibleRecurse: boolean = true): void {
 				const decimalNumbersRegex = /[+-]?\d+(\.\d+)?/g;
 
-				const normalisedInput = this.normaliseInput(newValue, this.locale);
+				const normalisedInput = this.normaliseInput(newValue, this.internalLocale);
 				// Match to find any numbers.
 				const matches = normalisedInput.match(decimalNumbersRegex);
 				let result = null;
@@ -298,6 +299,16 @@
 		},
 
 		created() {
+			if (this.locale === null) {
+				if (typeof window !== 'undefined' && window) {
+					this.internalLocale = window.navigator.language;
+					document.addEventListener("keydown", this.keychange);
+					document.addEventListener("keyup", this.keychange);
+				}
+			} else {
+				this.internalLocale = this.locale;
+			}
+
 			if (Vue.config.devtools) {
 				// Validate props that depend on each other in development mode.
 				if (this.min > this.max) {
@@ -307,8 +318,7 @@
 					console.warn(`nice-numeric-input Warning: There is no input event listener attached, use v-model or bind one directly to the input event.`)
 				}
 			}
-			document.addEventListener("keydown", this.keychange);
-			document.addEventListener("keyup", this.keychange);
+			
 		},
 
 		beforeDestroy() {

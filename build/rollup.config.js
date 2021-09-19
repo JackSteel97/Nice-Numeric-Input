@@ -41,6 +41,7 @@ const baseConfig = {
     ],
     replace: {
       'process.env.NODE_ENV': JSON.stringify('production'),
+      preventAssignment: true
     },
     vue: {
       css: true,
@@ -159,6 +160,7 @@ if (!argv.format || argv.format === 'iife') {
       name: 'nice-numeric-input',
       exports: 'auto',
       globals,
+      extend: true,
     },
     plugins: [
       replace(baseConfig.plugins.replace),

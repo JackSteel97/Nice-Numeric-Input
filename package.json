@@ -1,6 +1,6 @@
 {
   "name": "nice-numeric-input",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A Vue input component for numbers with realtime formating and currency support.",
   "main": "dist/nice-numeric-input.ssr.js",
   "browser": "dist/nice-numeric-input.esm.js",
