@@ -23,9 +23,7 @@ export default Vue.extend({
                           currency="GBP"
                           integer-only
                           :max="100"
-                          :min="0"
-                          hide-label
-                          no-controls />
+                          :min="0" />
     </div>
     <div>
       {{cashValue}}
