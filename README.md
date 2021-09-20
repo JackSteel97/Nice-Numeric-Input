@@ -2,7 +2,7 @@
 Nice-Numeric-Input is a modern, rich featured and highly customisable numeric input built on Vue. Capable of formatting as the user types, including currency formatting. With no extra dependencies other than Vue itself.
 
 ## Demo
-TODO: codepen demo
+[Basic Demo](https://codepen.io/Jsteel97/pen/YzQLZeP)
 
 ## Getting Started
 ### Installation
