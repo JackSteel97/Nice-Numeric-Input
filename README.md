@@ -1,4 +1,10 @@
 # Nice-Numeric-Input
+![npm](https://img.shields.io/npm/v/nice-numeric-input?style=flat-square)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/nice-numeric-input?label=Zipped%20Size&style=flat-square)
+![NPM](https://img.shields.io/npm/l/nice-numeric-input?label=License&style=flat-square)
+![npm peer dependency version](https://img.shields.io/npm/dependency-version/nice-numeric-input/peer/vue?style=flat-square)
+![npm](https://img.shields.io/npm/dw/nice-numeric-input?style=flat-square)
+
 Nice-Numeric-Input is a modern, rich featured and highly customisable numeric input built on Vue. Capable of formatting as the user types, including currency formatting. With no extra dependencies other than Vue itself.
 
 ## Demo
