@@ -93,6 +93,10 @@ For a full list of props see the [Reference Props](#props) section.
 | input               | `Number`      | Used automatically by a `v-model` binding. Can be bound manually, fires when the value is changed                        |
 | update:isValid      | `Boolean`     | Used automatically by the `.sync` modifier on `isValid` prop. Can be bound manually, fires when the valid value changes. |
 
+## Bug Reporting and Feature Request
+If you run into any bugs please open an [issue](https://github.com/JackSteel97/Nice-Numeric-Input/issues/new) and I'll fix it as soon as possible.
+
+Got an idea for a new feature to add? Open an [issue](https://github.com/JackSteel97/Nice-Numeric-Input/issues/new) with the title prefixed "Feature Request".
 
 # Support This Project
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R6R8NDIH)
