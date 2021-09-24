@@ -1,7 +1,20 @@
 {
   "name": "nice-numeric-input",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A Vue input component for numbers with realtime formating and currency support.",
+  "keywords": ["vue", "input", "component", "numeric", "currency", "format"],
+  "homepage": "https://github.com/JackSteel97/Nice-Numeric-Input",
+  "bugs": {
+    "url": "https://github.com/JackSteel97/Nice-Numeric-Input/issues"
+  },
+  "author": {
+    "name": "Jack Steel",
+    "url": "https://www.jacksteel.co.uk"
+  },
+  "funding":{
+    "type": "individual",
+    "url": "https://ko-fi.com/jacksteel"
+  },
   "license": "MIT",
   "main": "dist/nice-numeric-input.ssr.js",
   "browser": "dist/nice-numeric-input.esm.js",
