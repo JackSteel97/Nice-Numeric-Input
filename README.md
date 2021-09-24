@@ -92,3 +92,13 @@ For a full list of props see the [Reference Props](#props) section.
 |---------------------|---------------|--------------------------------------------------------------------------------------------------------------------------|
 | input               | `Number`      | Used automatically by a `v-model` binding. Can be bound manually, fires when the value is changed                        |
 | update:isValid      | `Boolean`     | Used automatically by the `.sync` modifier on `isValid` prop. Can be bound manually, fires when the valid value changes. |
+
+
+# Support This Project
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R6R8NDIH)
+
+BTC: bc1qpss998j2j06fmdrycn4fvh3vrdu7vttkjsngwd
+
+ETH: 0xab04C5D9Dd7145fFf2dD94db7D7A50ae7Ce4Ab25
+
+ADA: addr1qxhk3mptca7l0qk2p7hhh5tp4qfqvqj5tpj5vcgkcy5zx6d0drkzh3ma77pv5ra000gkr2qjqcp9gkr9ges3dsfgyd5srdnl4c
