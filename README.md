@@ -14,6 +14,7 @@ Nice-Numeric-Input is a modern, rich featured and highly customisable numeric in
 
 
 ## Getting Started
+<a href="https://www.npmjs.com/package/nice-numeric-input">Npm</a>
 ### Installation
 ```bash
 > npm install nice-numeric-input
